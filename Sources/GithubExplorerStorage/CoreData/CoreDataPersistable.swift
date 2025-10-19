@@ -8,7 +8,7 @@
 import CoreData
 
 /// A Core Data specific refinement of `ObjectPersistable`.
-protocol CoreDataPersistable: ObjectPersistable {
+public protocol CoreDataPersistable: ObjectPersistable {
     /// The Core Data entity name associated with this model.
     static var entityName: String { get }
 
