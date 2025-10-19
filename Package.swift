@@ -25,10 +25,8 @@ let package = Package(
                     name: "GithubExplorerUtils",
                     package: "astro-github-explorer-utils"
                 )
-            ],
-            swiftSettings: [
-                .unsafeFlags(["-Xfrontend", "-strict-concurrency=off"], .when(configuration: .debug))
-            ]),
+            ]
+        ),
         .testTarget(
             name: "GithubExplorerStorageTests",
             dependencies: ["GithubExplorerStorage"]

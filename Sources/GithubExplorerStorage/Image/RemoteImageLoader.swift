@@ -12,7 +12,7 @@ import GithubExplorerUtils
 @MainActor
 public final class RemoteImageLoader: ObservableObject {
     /// Represents the current loading state of a remote image.
-    enum Phase: Equatable {
+    public enum Phase: Equatable {
         /// Indicates that the image is currently being loaded.
         case loading
 
@@ -23,14 +23,14 @@ public final class RemoteImageLoader: ObservableObject {
         case failure
     }
 
-    @Published private(set) var phase: Phase = .loading
+    @Published public private(set) var phase: Phase = .loading
 
     private var url: URL?
     private let cache: any ImageDataCaching
     private var task: Task<Void, Never>?
     private let transitionAnimation = Animation.easeInOut(duration: Constants.avatarFadeDuration)
 
-    init(url: URL?, cache: any ImageDataCaching = ImageDataCache.shared) {
+    public init(url: URL?, cache: any ImageDataCaching = ImageDataCache.shared) {
         self.url = url
         self.cache = cache
     }
