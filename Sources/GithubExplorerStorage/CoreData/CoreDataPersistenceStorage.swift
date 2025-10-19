@@ -9,8 +9,9 @@
 import Foundation
 
 /// A concrete Core Data–backed implementation of `PersistenceStorage`.
-final class CoreDataPersistenceStorage: PersistenceStorage {
-    @MainActor static let shared = CoreDataPersistenceStorage()
+public final class CoreDataPersistenceStorage: PersistenceStorage {
+    @MainActor
+    public static let shared = CoreDataPersistenceStorage()
 
     private let container: NSPersistentContainer
 
@@ -35,7 +36,7 @@ final class CoreDataPersistenceStorage: PersistenceStorage {
         }
     }
 
-    func fetch<T: ObjectPersistable>(forId id: String, as type: T.Type) -> T? {
+    public func fetch<T: ObjectPersistable>(forId id: String, as type: T.Type) -> T? {
         guard let coreDataType = type as? CoreDataPersistable.Type else {
             return nil
         }
@@ -55,7 +56,7 @@ final class CoreDataPersistenceStorage: PersistenceStorage {
         }
     }
 
-    func fetch<T: ObjectPersistable>(for type: T.Type) -> [T] {
+    public func fetch<T: ObjectPersistable>(for type: T.Type) -> [T] {
         guard let coreDataType = type as? CoreDataPersistable.Type else {
             return []
         }
@@ -74,7 +75,7 @@ final class CoreDataPersistenceStorage: PersistenceStorage {
         }
     }
 
-    func store<T: ObjectPersistable>(object: T) {
+    public func store<T: ObjectPersistable>(object: T) {
         guard let coreDataObject = object as? CoreDataPersistable else {
             return
         }
@@ -95,7 +96,7 @@ final class CoreDataPersistenceStorage: PersistenceStorage {
         }
     }
 
-    func remove<T: ObjectPersistable>(forId id: String, as type: T.Type) {
+    public func remove<T: ObjectPersistable>(forId id: String, as type: T.Type) {
         guard let coreDataType = type as? CoreDataPersistable.Type else {
             return
         }
