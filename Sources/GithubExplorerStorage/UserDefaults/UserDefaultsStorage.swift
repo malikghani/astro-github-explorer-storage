@@ -9,7 +9,9 @@ import Foundation
 
 /// Wrapper around `UserDefaults` that handles simple persistence needs.
 public final class UserDefaultsStorage {
-    @MainActor static let shared = UserDefaultsStorage()
+    @MainActor
+    public static let shared = UserDefaultsStorage()
+    
     private let defaults: UserDefaults
 
     init(defaults: UserDefaults = .standard) {
@@ -17,7 +19,7 @@ public final class UserDefaultsStorage {
     }
 
     /// Stores a value for the given key, removing the entry when `value` is `nil`.
-    func store<Value>(_ value: Value?, for key: UserDefaultsKey<Value>) {
+    public func store<Value>(_ value: Value?, for key: UserDefaultsKey<Value>) {
         if let value {
             defaults.set(value, forKey: key.rawValue)
         } else {
@@ -26,7 +28,7 @@ public final class UserDefaultsStorage {
     }
 
     /// Fetches a value for the given key or returns the key's default value.
-    func fetch<Value>(for key: UserDefaultsKey<Value>) -> Value? {
+    public func fetch<Value>(for key: UserDefaultsKey<Value>) -> Value? {
         if let value = defaults.object(forKey: key.rawValue) as? Value {
             return value
         }

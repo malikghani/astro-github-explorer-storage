@@ -9,7 +9,7 @@ import Foundation
 
 /// A protocol that defines the core requirements for persisting, retrieving,
 /// and removing objects from a storage service.
-protocol PersistenceStorage {
+public protocol PersistenceStorage {
     /// Retrieves a persisted object by its unique identifier.
     ///
     /// - Parameters:

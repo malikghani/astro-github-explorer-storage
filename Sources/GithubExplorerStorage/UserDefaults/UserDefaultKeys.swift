@@ -8,7 +8,7 @@
 import Foundation
 
 /// A strongly typed key used to store and retrieve values from `UserDefaults`.
-struct UserDefaultsKey<Value: Sendable>: Sendable {
+public struct UserDefaultsKey<Value: Sendable>: Sendable {
     /// The string key used internally to identify the stored value in `UserDefaults`.
     let rawValue: String
 
@@ -29,5 +29,5 @@ struct UserDefaultsKey<Value: Sendable>: Sendable {
 /// A collection of keys used for storing and retrieving values from `UserDefaults`.
 public enum UserDefaultKeys {
     /// The key used to store the user's preferred search order setting in `UserDefaults`.
-    static let searchOrder = UserDefaultsKey<String>("search.order")
+    public static let searchOrder = UserDefaultsKey<String>("search.order")
 }
